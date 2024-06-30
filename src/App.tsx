@@ -18,6 +18,7 @@ function App() {
         >
           제발 배포해주세요
         </a>
+        <p>캐싱이 되나요?</p>
       </header>
     </div>
   );
