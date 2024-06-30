@@ -16,6 +16,14 @@ jobs:
          with:
            node-version: lts/Hydrogen
 
+       - name: Cache
+         uses: actions/cache@v4.0.2
+         with:
+           path: "**/node_modules"
+           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+           restore-keys: |
+            ${{ runner.os }}-node-
+      
        - name: Install Dependencies
          if: steps.cache.outputs.cache-hit != 'true'
          run: npm install
