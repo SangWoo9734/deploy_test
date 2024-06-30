@@ -48,6 +48,8 @@ jobs:
            host: ${{ secrets.HOST }}
            username: ${{ secrets.USER }}
            script: |
-             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/namanmoo
-             docker stop namanmoo
-             docker run -d --rm --name namanmoo -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/namanmoo
+              docker pull ${{ secrets.DOCKERHUB_USERNAME }}/namanmoo
+              docker stop namanmoo || true
+              docker rm namanmoo || true
+              docker run -d --rm --name namanmoo -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/namanmoo
+
